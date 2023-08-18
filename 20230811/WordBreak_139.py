@@ -34,6 +34,9 @@ class Solution:
         header, body = set(), set()
         for word in sorted(wordDict):
             if self.search(word, self.searchTree):
+                # Trick1: If a longer word can be represented by existing words, remove that word.
+                # Because in this solution, more words with same prefix always mean more recursion
+                # combination.
                 continue
             root = self.searchTree
             for i, char in enumerate(word):
